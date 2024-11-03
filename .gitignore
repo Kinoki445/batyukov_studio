@@ -1,0 +1,6 @@
+/public/storage/posts
+/public/storage/users
+/database/database.sqlite
+/.env
+/vendor
+/node_modules
