@@ -1,5 +1,5 @@
-/public/storage/posts
-/public/storage/users
+/storage/app/public/posts
+/storage/app/public/users
 /database/database.sqlite
 /.env
 /vendor
