@@ -35,7 +35,7 @@
                         <h2>{{ $post->title }}</h2>
                         <p>{{ $post->content }}</p>
                         @if($post->image)
-                            <img src="{{ asset('storage/' . $post->image) }}" alt="Image for {{ $post->title }}">
+                            <img src="{{ asset("storage/" . $post->image) }}" alt="Image for {{ $post->title }}">
                         @else
                             <p>No image available</p> 
                         @endif

@@ -7,22 +7,22 @@ use App\Ship\Parents\Requests\Request as ParentRequest;
 class CreatePostRequest extends ParentRequest
 {
     protected array $access = [
-        'permissions' => '',
-        'roles' => '',
+        'permissions' => null,
+        'roles' => null,
     ];
 
     protected array $decode = [
         // 'id',
     ];
 
-    protected array $urlParameters = [
-        // 'id',
-    ];
+    protected array $urlParameters = [ ];
 
     public function rules(): array
     {
         return [
-            // 'id' => 'required',
+            'title' => 'required|min:2|max:50',
+            'content' => 'required|min:2|max:500',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif',
         ];
     }
 

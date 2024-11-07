@@ -20,7 +20,7 @@ class DeletePostTask extends ParentTask
      * @throws DeleteResourceFailedException
      * @throws NotFoundException
      */
-    public function run($id): int
+    public function run(int $id): int
     {
         try {
             $post = $this->repository->find($id);

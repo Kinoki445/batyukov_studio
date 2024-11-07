@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class UpdatePostController extends WebController
 {
-    public function edit(Request $request)
+    public function __invoke(Request $request)
     {
         return view('appSection@post::post-edit', [
             'post' => Post::find($request->id)
