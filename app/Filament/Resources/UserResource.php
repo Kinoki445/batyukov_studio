@@ -14,11 +14,10 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\BooleanColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 
 class UserResource extends Resource
@@ -36,7 +35,21 @@ class UserResource extends Resource
                 ->avatar()
                 ->downloadable()
                 ->imageEditor(),
+            TextInput::make('name')
+                ->required(),
+            TextInput::make('email')
+                ->email()
+                ->required(),
+            Select::make('gender')
+                ->options([
+                    'male' => 'Male',
+                    'female' => 'Female',
+                ])
+                ->required(),
+            DatePicker::make('birth')
+                ->required()
         ]);
+
     }
 
     public static function table(Table $table): Table
@@ -74,8 +87,22 @@ class UserResource extends Resource
                     ->searchable(),
             ])
             ->filters([
-                //
+                Tables\Filters\Filter::make('id')
+                    ->label('Id'),
+                Tables\Filters\Filter::make('name')
+                    ->label('Name'),
+                Tables\Filters\Filter::make('email')
+                    ->label('Email'),
+                Tables\Filters\SelectFilter::make('gender')
+                    ->options([
+                        'male' => 'Male',
+                        'female' => 'Female',
+                    ])
+                ->label('Gender'),
+
             ])
+
+
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])

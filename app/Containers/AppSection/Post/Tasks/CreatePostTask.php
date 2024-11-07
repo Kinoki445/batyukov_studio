@@ -27,7 +27,7 @@ class CreatePostTask extends ParentTask
         }
 
         // Создание поста
-        return Post::create([
+        return app(PostRepository::class)->create([
             'title' => $data['title'],
             'content' => $data['content'],
             'image' => $data['image'] ?? null,

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class DeletePostController extends WebController
 {
-    public function destroy(Request $request, DeletePostAction $action,  $id)
+    public function destroy(Request $request, DeletePostAction $action,  int $id)
     {
         $action->run($id);
         return redirect()->route('home-page')->with('status', 'Post Deleted successfully!');

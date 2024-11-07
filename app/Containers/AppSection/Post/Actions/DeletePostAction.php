@@ -19,7 +19,7 @@ class DeletePostAction extends ParentAction
      * @throws DeleteResourceFailedException
      * @throws NotFoundException
      */
-    public function run($id): int
+    public function run(int $id): int
     {
         return $this->deletePostTask->run($id);
     }
