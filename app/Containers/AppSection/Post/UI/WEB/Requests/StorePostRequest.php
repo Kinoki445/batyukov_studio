@@ -12,11 +12,11 @@ class StorePostRequest extends ParentRequest
     ];
 
     protected array $decode = [
-        // 'id',
+         'id',
     ];
 
     protected array $urlParameters = [
-        // 'id',
+         'id',
     ];
 
     public function rules(): array

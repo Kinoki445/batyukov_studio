@@ -12,7 +12,7 @@ class UpdatePostRequest extends ParentRequest
     ];
 
     protected array $decode = [
-        // 'id',
+         'id',
     ];
 
     protected array $urlParameters = [

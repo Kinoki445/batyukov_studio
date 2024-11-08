@@ -24,7 +24,13 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-user-circle';
+
+    protected  static  ?string $navigationLabel = 'Пользователи';
+    protected  static  ?string $modelLabel = 'Пользователи';
+
+    protected static ?string $navigationGroup = 'Пользователи';
+
 
     public static function form(Form $form): Form
     {
@@ -34,20 +40,25 @@ class UserResource extends Resource
                 ->directory('users/images')
                 ->avatar()
                 ->downloadable()
-                ->imageEditor(),
+                ->imageEditor()
+                ->label('Изображение'),
             TextInput::make('name')
-                ->required(),
+                ->required()
+                ->label('Имя'),
             TextInput::make('email')
                 ->email()
-                ->required(),
+                ->required()
+                ->label('Email'),
             Select::make('gender')
                 ->options([
-                    'male' => 'Male',
-                    'female' => 'Female',
+                    'male' => 'Мужчина',
+                    'female' => 'Женщина',
                 ])
+                ->label('Пол')
                 ->required(),
             DatePicker::make('birth')
                 ->required()
+                ->label('Дата рождения'),
         ]);
 
     }
@@ -57,11 +68,11 @@ class UserResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')
-                    ->label('ID')
+                    ->label('id')
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('name')
-                    ->label('Name')
+                    ->label('Имя')
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('email')
@@ -69,36 +80,36 @@ class UserResource extends Resource
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('gender')
-                    ->label('Gender')
+                    ->label('Пол')
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('birth')
                     ->dateTime()
-                    ->label('Birth Date')
+                    ->label('День рождения')
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('created_at')
-                    ->label('Created At')
+                    ->label('Создана')
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('updated_at')
-                    ->label('Updated At')
+                    ->label('Обновленно')
                     ->sortable()
                     ->searchable(),
             ])
             ->filters([
                 Tables\Filters\Filter::make('id')
-                    ->label('Id'),
+                    ->label('id'),
                 Tables\Filters\Filter::make('name')
-                    ->label('Name'),
+                    ->label('Имя'),
                 Tables\Filters\Filter::make('email')
                     ->label('Email'),
                 Tables\Filters\SelectFilter::make('gender')
                     ->options([
-                        'male' => 'Male',
-                        'female' => 'Female',
+                        'male' => 'Мужской',
+                        'female' => 'Женский',
                     ])
-                ->label('Gender'),
+                ->label('Пол'),
 
             ])
 
