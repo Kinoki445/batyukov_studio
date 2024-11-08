@@ -23,23 +23,31 @@ class PostResource extends Resource
 {
     protected static ?string $model = Post::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-bottom-center-text';
+
+    protected  static  ?string $navigationLabel = 'Посты';
+    protected  static  ?string $modelLabel = 'Посты';
+
+    protected static ?string $navigationGroup = 'Посты';
 
     public static function form(Form $form): Form
     {
         return $form
         ->schema([
             TextInput::make('title')
-                ->required(),
+                ->required()
+                ->label('Название'),
             TextInput::make('content')
-                ->required(),
+                ->required()
+                ->label('Текст'),
             FileUpload::make('image')
                 ->directory('posts/images')
                 ->avatar()
                 ->downloadable()
-                ->imageEditor(),
+                ->imageEditor()
+                ->label('Изображение'),
             Select::make('user_id')
-                ->label('User')
+                ->label('Пользователь')
                 ->options(User::whereNotNull('name')->pluck('name', 'id')->toArray())
                 ->required(),
         ]);
@@ -55,12 +63,12 @@ class PostResource extends Resource
                         ->sortable()
                         ->searchable(),
                     ImageColumn::make('image')
-                        ->label('Image')
+                        ->label('Картинка')
                         ->circular(),
                     TextColumn::make('title')
-                        ->label('Title'),
+                        ->label('Название'),
                     TextColumn::make('user.name')
-                        ->label('User Name'),
+                        ->label('Пользователь'),
                     
                 ])
                 ->filters([

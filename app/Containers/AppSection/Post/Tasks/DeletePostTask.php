@@ -29,6 +29,7 @@ class DeletePostTask extends ParentTask
         }
 
         if ($this->repository->delete($post->id)) {
+            unlink("storage/$post->image");
             return $post->id;
         }
 
