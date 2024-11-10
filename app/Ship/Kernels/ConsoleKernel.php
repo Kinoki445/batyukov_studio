@@ -2,6 +2,7 @@
 
 namespace App\Ship\Kernels;
 
+use App\Ship\Jobs\Job;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as LaravelConsoleKernel;
 
@@ -25,7 +26,7 @@ class ConsoleKernel extends LaravelConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->job(new Job())->everyMinute();
     }
 
     /**
