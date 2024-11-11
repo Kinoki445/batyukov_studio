@@ -43,6 +43,7 @@
         "ext-sodium": "*",
         "ext-tokenizer": "*",
         "filament/filament": "^3.2",
+        "filament/spatie-laravel-media-library-plugin": "^3.2",
         "guzzlehttp/guzzle": "^7.2",
         "irazasyed/telegram-bot-sdk": "^3.14",
         "laravel/framework": "^10.0",

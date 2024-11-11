@@ -34,18 +34,18 @@
                     <li>
                         <h2><?php echo e($post->title); ?></h2>
                         <p><?php echo e($post->content); ?></p>
-                        <?php if($post->image): ?>
-                            <img src="<?php echo e(asset("storage/" . $post->image)); ?>" alt="Image for <?php echo e($post->title); ?>">
+                        <?php if($post->getFirstMediaUrl('image')): ?>
+                            <img src="<?php echo e($post->getFirstMediaUrl('image')); ?>" alt="Image for <?php echo e($post->title); ?>">
                         <?php else: ?>
-                            <p>No image available</p> 
+                            <p>No image available</p>
                         <?php endif; ?>
                         <p>Автор: <?php echo e($post->user->name); ?></p>
                         <?php if($post->user->image): ?>
-                            <img src="<?php echo e(asset('storage/' . $post->user->image)); ?>" alt="Avatar of <?php echo e($post->user->name); ?>" style="width: 50px; height: 50px;">
+                            <img src="<?php echo e(asset($post->user->getFirstMediaUrl('user'))); ?>" alt="Avatar of <?php echo e($post->user->name); ?>" style="width: 50px; height: 50px;">
                         <?php endif; ?>
                         <?php if(auth('web')->id() == $post->user_id): ?>
-                            <a href="<?php echo e(route('post_edit', ['id' => $post->id])); ?>" class="button">Edit</a>
-                            <a href="<?php echo e(route('post_delete', ['id' => $post->id])); ?>" class="button">Delete</a>
+                            <a href="<?php echo e(route('post-edit', ['id' => $post->id])); ?>" class="button">Edit</a>
+                            <a href="<?php echo e(route('post-delete', ['id' => $post->id])); ?>" class="button">Delete</a>
                         <?php endif; ?>
                     </li>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

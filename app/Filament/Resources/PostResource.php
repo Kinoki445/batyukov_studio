@@ -16,8 +16,9 @@ use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+
 
 class PostResource extends Resource
 {
@@ -40,7 +41,8 @@ class PostResource extends Resource
             TextInput::make('content')
                 ->required()
                 ->label('Текст'),
-            FileUpload::make('image')
+            SpatieMediaLibraryFileUpload::make('image')
+                ->collection('image')
                 ->directory('posts/images')
                 ->avatar()
                 ->downloadable()
@@ -62,7 +64,8 @@ class PostResource extends Resource
                         ->label('ID')
                         ->sortable()
                         ->searchable(),
-                    ImageColumn::make('image')
+                    SpatieMediaLibraryImageColumn::make('image')
+                        ->collection('image')
                         ->label('Картинка')
                         ->circular(),
                     TextColumn::make('title')
@@ -101,5 +104,3 @@ class PostResource extends Resource
         ];
     }
 }
-
-

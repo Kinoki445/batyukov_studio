@@ -30,8 +30,8 @@ class UpdatePostTask extends ParentTask
         }
 
         if (isset($data['image'])) {
-            $imagePath = $data['image']->store('posts/images', 'public');
-            $data['image'] = $imagePath;
+            $post->clearMediaCollection('image');
+            $post->addMedia($data['image']);
         }
         
         $post->update($data);

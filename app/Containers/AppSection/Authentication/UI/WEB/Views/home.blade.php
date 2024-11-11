@@ -34,18 +34,18 @@
                     <li>
                         <h2>{{ $post->title }}</h2>
                         <p>{{ $post->content }}</p>
-                        @if($post->image)
-                            <img src="{{ asset("storage/" . $post->image) }}" alt="Image for {{ $post->title }}">
+                        @if($post->getFirstMediaUrl('image'))
+                            <img src="{{ $post->getFirstMediaUrl('image') }}" alt="Image for {{ $post->title }}">
                         @else
-                            <p>No image available</p> 
+                            <p>No image available</p>
                         @endif
                         <p>Автор: {{ $post->user->name }}</p>
                         @if($post->user->image)
-                            <img src="{{ asset('storage/' . $post->user->image) }}" alt="Avatar of {{ $post->user->name }}" style="width: 50px; height: 50px;">
+                            <img src="{{ asset($post->user->getFirstMediaUrl('user')) }}" alt="Avatar of {{ $post->user->name }}" style="width: 50px; height: 50px;">
                         @endif
                         @if(auth('web')->id() == $post->user_id)
-                            <a href="{{ route('post_edit', ['id' => $post->id]) }}" class="button">Edit</a>
-                            <a href="{{ route('post_delete', ['id' => $post->id]) }}" class="button">Delete</a>
+                            <a href="{{ route('post-edit', ['id' => $post->id]) }}" class="button">Edit</a>
+                            <a href="{{ route('post-delete', ['id' => $post->id]) }}" class="button">Delete</a>
                         @endif
                     </li>
                 @endforeach

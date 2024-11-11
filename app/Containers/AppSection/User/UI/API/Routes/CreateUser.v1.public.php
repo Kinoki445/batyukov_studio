@@ -25,5 +25,5 @@
 use App\Containers\AppSection\User\UI\API\Controllers\CreateUserController;
 use Illuminate\Support\Facades\Route;
 
-Route::patch('users-create/', CreateUserController::class)
+Route::patch('users-create', CreateUserController::class)
     ->middleware(['auth:api']);

@@ -55,9 +55,10 @@
     51 => 'RyanChandler\\BladeCaptureDirective\\BladeCaptureDirectiveServiceProvider',
     52 => 'Spatie\\Fractal\\FractalServiceProvider',
     53 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
-    54 => 'Spatie\\Permission\\PermissionServiceProvider',
-    55 => 'Vinkla\\Hashids\\HashidsServiceProvider',
-    56 => 'App\\Providers\\Filament\\AdminPanelProvider',
+    54 => 'Spatie\\MediaLibrary\\MediaLibraryServiceProvider',
+    55 => 'Spatie\\Permission\\PermissionServiceProvider',
+    56 => 'Vinkla\\Hashids\\HashidsServiceProvider',
+    57 => 'App\\Providers\\Filament\\AdminPanelProvider',
   ),
   'eager' => 
   array (
@@ -100,9 +101,10 @@
     36 => 'RyanChandler\\BladeCaptureDirective\\BladeCaptureDirectiveServiceProvider',
     37 => 'Spatie\\Fractal\\FractalServiceProvider',
     38 => 'Spatie\\LaravelIgnition\\IgnitionServiceProvider',
-    39 => 'Spatie\\Permission\\PermissionServiceProvider',
-    40 => 'Vinkla\\Hashids\\HashidsServiceProvider',
-    41 => 'App\\Providers\\Filament\\AdminPanelProvider',
+    39 => 'Spatie\\MediaLibrary\\MediaLibraryServiceProvider',
+    40 => 'Spatie\\Permission\\PermissionServiceProvider',
+    41 => 'Vinkla\\Hashids\\HashidsServiceProvider',
+    42 => 'App\\Providers\\Filament\\AdminPanelProvider',
   ),
   'deferred' => 
   array (

@@ -4,14 +4,15 @@ namespace App\Containers\AppSection\Post\Models;
 
 use App\Containers\AppSection\User\Models\User;
 use App\Ship\Parents\Models\Model as ParentModel;
-use Illuminate\Http\Client\Request;
-use Vinkla\Hashids\Facades\Hashids;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\Image\Enums\Fit;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Post extends ParentModel
+class Post extends ParentModel  implements HasMedia
 {
-    /**
-     * A resource key to be used in the serialized responses.
-     */
+    use InteractsWithMedia;
+
     protected string $resourceKey = 'Post';
 
     protected $fillable = [
@@ -24,5 +25,13 @@ class Post extends ParentModel
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this
+            ->addMediaConversion('preview')
+            ->fit(Fit::Contain, 300, 300)
+            ->nonQueued();
     }
 }

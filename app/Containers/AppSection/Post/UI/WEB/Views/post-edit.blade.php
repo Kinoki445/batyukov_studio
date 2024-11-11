@@ -6,7 +6,8 @@
     <title>Edit Post</title>
 </head>
 <body>
-    <form action="{{ route('post_update', $post->id) }}" method="POST" enctype="multipart/form-data">
+${{ $post }}
+    <form action="{{ route('post-update', $post->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div>
             <input type="hidden" name="id" value="{{ $post->id }}">
@@ -20,8 +21,8 @@
         <div>
             <label for="image">Image:</label>
             <input type="file" id="image" name="image">
-            @if($post->image)
-                <img src="{{ asset('storage/' . $post->image) }}" alt="Current Image" width="100">
+            @if($post->getFirstMediaUrl('image'))
+                <img src="{{ $post->getFirstMediaUrl('image') }}" alt="Current Image" width="100">
             @endif
         </div>
         <div>

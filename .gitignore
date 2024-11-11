@@ -1,7 +1,13 @@
 /storage/app/public/posts/images
 /storage/app/public/users/images
+/storage/app/debugbar
+/storage/logs
+/storage/oauth-private.key
+/storage/oauth-public.key
 /database/database.sqlite
 /.env
 /vendor
 /node_modules
 /home/kinoki/batyk/batyukov_studio/
+/bootstrap/cache/services.php
+/.idea
