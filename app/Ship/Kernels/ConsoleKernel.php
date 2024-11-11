@@ -26,7 +26,7 @@ class ConsoleKernel extends LaravelConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->job(new Job())->everyMinute();
+        $schedule->job(new Job())->everySecond();
     }
 
     /**

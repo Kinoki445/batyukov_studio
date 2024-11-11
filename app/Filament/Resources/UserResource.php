@@ -16,6 +16,8 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Illuminate\Support\Carbon;
 
 use Illuminate\Database\Eloquent\Builder;
 
@@ -36,8 +38,9 @@ class UserResource extends Resource
     {
         return $form
         ->schema([
-            FileUpload::make('image')
+            SpatieMediaLibraryFileUpload::make('image')
                 ->directory('users/images')
+                ->collection('user')
                 ->avatar()
                 ->downloadable()
                 ->imageEditor()
@@ -58,7 +61,10 @@ class UserResource extends Resource
                 ->required(),
             DatePicker::make('birth')
                 ->required()
-                ->label('Дата рождения'),
+                ->label('Дата рождения')
+                ->after(Carbon::now()->subYears(80))
+                ->before(Carbon::now())
+                ->format('d.m.Y'),
         ]);
 
     }
@@ -74,7 +80,8 @@ class UserResource extends Resource
                 TextColumn::make('name')
                     ->label('Имя')
                     ->sortable()
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(),
                 TextColumn::make('email')
                     ->label('Email')
                     ->sortable()
@@ -100,10 +107,6 @@ class UserResource extends Resource
             ->filters([
                 Tables\Filters\Filter::make('id')
                     ->label('id'),
-                Tables\Filters\Filter::make('name')
-                    ->label('Имя'),
-                Tables\Filters\Filter::make('email')
-                    ->label('Email'),
                 Tables\Filters\SelectFilter::make('gender')
                     ->options([
                         'male' => 'Мужской',
@@ -112,8 +115,6 @@ class UserResource extends Resource
                 ->label('Пол'),
 
             ])
-
-
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])

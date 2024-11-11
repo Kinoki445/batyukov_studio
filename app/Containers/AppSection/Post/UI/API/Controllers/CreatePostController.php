@@ -25,7 +25,14 @@ class CreatePostController extends ApiController
      */
     public function __invoke(CreatePostRequest $request): JsonResponse
     {
-        $post = $this->action->run($request);
+        $data = $request->sanitizeInput([
+            'title',
+            'content',
+            'image',
+            'user_id',
+        ]);
+
+        $post = $this->action->run($data);
 
         return $this->created($this->transform($post, PostTransformer::class));
     }

@@ -31,7 +31,6 @@ class CreateUserRequest extends ParentRequest
             'birth' => ['date', 'nullable'],
             'password' => [
                 Password::default(),
-                'required_with:current_password',
             ],
             'password_confirmation' => 'required_with:password|same:password',
         ];
