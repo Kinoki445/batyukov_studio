@@ -43,7 +43,6 @@ class PostResource extends Resource
                 ->label('Текст'),
             SpatieMediaLibraryFileUpload::make('image')
                 ->collection('image')
-                ->directory('posts/images')
                 ->avatar()
                 ->downloadable()
                 ->imageEditor()

@@ -39,11 +39,8 @@ class UserResource extends Resource
         return $form
         ->schema([
             SpatieMediaLibraryFileUpload::make('image')
-                ->directory('users/images')
                 ->collection('user')
-                ->avatar()
-                ->downloadable()
-                ->imageEditor()
+
                 ->label('Изображение'),
             TextInput::make('name')
                 ->required()

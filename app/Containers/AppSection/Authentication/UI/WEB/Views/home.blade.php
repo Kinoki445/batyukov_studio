@@ -40,8 +40,9 @@
                             <p>No image available</p>
                         @endif
                         <p>Автор: {{ $post->user->name }}</p>
-                        @if($post->user->image)
-                            <img src="{{ asset($post->user->getFirstMediaUrl('user')) }}" alt="Avatar of {{ $post->user->name }}" style="width: 50px; height: 50px;">
+
+                        @if($post->user->getFirstMediaUrl('user'))
+                            <img src="{{($post->user->getFirstMediaUrl('user'))}}" alt="Avatar of {{ $post->user->name }}" style="width: 50px; height: 50px;">
                         @endif
                         @if(auth('web')->id() == $post->user_id)
                             <a href="{{ route('post-edit', ['id' => $post->id]) }}" class="button">Edit</a>

@@ -18,7 +18,6 @@ class Post extends ParentModel  implements HasMedia
     protected $fillable = [
         'title',
         'content',
-        'image',
         'user_id',
     ];
 
