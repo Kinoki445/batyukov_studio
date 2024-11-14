@@ -40,8 +40,9 @@
                             <p>No image available</p>
                         <?php endif; ?>
                         <p>Автор: <?php echo e($post->user->name); ?></p>
-                        <?php if($post->user->image): ?>
-                            <img src="<?php echo e(asset($post->user->getFirstMediaUrl('user'))); ?>" alt="Avatar of <?php echo e($post->user->name); ?>" style="width: 50px; height: 50px;">
+
+                        <?php if($post->user->getFirstMediaUrl('user')): ?>
+                            <img src="<?php echo e(($post->user->getFirstMediaUrl('user'))); ?>" alt="Avatar of <?php echo e($post->user->name); ?>" style="width: 50px; height: 50px;">
                         <?php endif; ?>
                         <?php if(auth('web')->id() == $post->user_id): ?>
                             <a href="<?php echo e(route('post-edit', ['id' => $post->id])); ?>" class="button">Edit</a>

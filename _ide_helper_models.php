@@ -87,7 +87,6 @@ namespace App\Containers\AppSection\Post\Models{
  * @property int $id
  * @property string $title
  * @property string $content
- * @property string|null $image
  * @property int $user_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -101,12 +100,11 @@ namespace App\Containers\AppSection\Post\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereContent($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Post whereImage($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Post whereUserId($value)
  */
-	class Post extends \Eloquent {}
+	class Post extends \Eloquent implements \Spatie\MediaLibrary\HasMedia {}
 }
 
 namespace App\Containers\AppSection\User\Models{
@@ -126,6 +124,8 @@ namespace App\Containers\AppSection\User\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Passport\Client> $clients
  * @property-read int|null $clients_count
+ * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection<int, \Spatie\MediaLibrary\MediaCollections\Models\Media> $media
+ * @property-read int|null $media_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
  * @property-read \App\Containers\AppSection\Authorization\Data\Collections\PermissionCollection<int, \App\Containers\AppSection\Authorization\Models\Permission> $permissions
@@ -154,6 +154,6 @@ namespace App\Containers\AppSection\User\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  */
-	class User extends \Eloquent implements \App\Ship\Contracts\MustVerifyEmail, \Illuminate\Contracts\Auth\MustVerifyEmail {}
+	class User extends \Eloquent implements \App\Ship\Contracts\MustVerifyEmail, \Spatie\MediaLibrary\HasMedia, \Illuminate\Contracts\Auth\MustVerifyEmail {}
 }
 

@@ -31,7 +31,7 @@ class UpdatePostTask extends ParentTask
 
         if (isset($data['image'])) {
             $post->clearMediaCollection('image');
-            $post->addMedia($data['image']);
+            $post->addMedia($data['image'])->toMediaCollection('image');
         }
         
         $post->update($data);

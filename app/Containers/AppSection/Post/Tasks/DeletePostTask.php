@@ -28,7 +28,7 @@ class DeletePostTask extends ParentTask
             throw new NotFoundException();
         }
 
-        $post->clearMediaCollection('image'); // Замените 'image' на имя вашей коллекции
+        $post->clearMediaCollection('image');
 
         if ($this->repository->delete($post->id)) {
             return $post->id;
